@@ -1,0 +1,408 @@
+:root {
+    /* Dynamic, vibrant color palette for a hacker context */
+    --bg-color: #0b0c10;
+    --bg-color-light: #1f2833;
+    --text-color: #c5c6c7;
+    --accent-primary: #66fcf1;
+    --accent-secondary: #45a29e;
+    --border-color: rgba(102, 252, 241, 0.2);
+    --shadow-glow: 0 0 10px rgba(102, 252, 241, 0.4);
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(69, 162, 158, 0.05), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(102, 252, 241, 0.05), transparent 25%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--accent-primary);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+header h1 {
+    font-size: 3rem;
+    text-shadow: var(--shadow-glow);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: var(--accent-secondary);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card layout for writeups */
+.writeups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.level-card {
+    background: var(--bg-color-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: fadeInUp 0.6s ease-out both;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Apply staggered animation delay to cards */
+.level-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.level-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.level-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.level-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.level-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.level-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+    border-color: var(--accent-primary);
+}
+
+.level-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    transition: all 0.5s ease;
+}
+
+.level-card:hover::before {
+    left: 100%;
+}
+
+.level-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.level-title h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.chevron-icon {
+    color: var(--accent-secondary);
+    transition: transform 0.3s ease;
+}
+
+.level-card:hover .chevron-icon {
+    transform: translateX(5px);
+    color: var(--accent-primary);
+}
+
+.description {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Modal styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(11, 12, 16, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.modal-content {
+    background: var(--bg-color-light);
+    border: 1px solid var(--accent-primary);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(102, 252, 241, 0.2);
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.modal-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg-color-light);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-header h2 {
+    margin: 0;
+    text-shadow: 0 0 5px var(--accent-primary);
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: var(--accent-primary);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.terminal-block {
+    background: #000;
+    border-radius: 6px;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: #0f0;
+    border: 1px solid #333;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.command {
+    color: var(--accent-primary);
+}
+
+.command::before {
+    content: "$ ";
+    color: #fff;
+}
+
+.password-box {
+    background: rgba(102, 252, 241, 0.1);
+    border: 1px dashed var(--accent-primary);
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.password-box h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.password-box code {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+    letter-spacing: 2px;
+}
+
+/* Syntax Highlighting */
+.markdown-body {
+    font-family: var(--font-sans);
+}
+
+.markdown-body pre {
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.markdown-body code {
+    font-family: var(--font-mono);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-secondary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Admin Panel Styles */
+.admin-btn {
+    background: transparent;
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.admin-btn:hover {
+    background: rgba(102, 252, 241, 0.1);
+    box-shadow: var(--shadow-glow);
+}
+
+.admin-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 5px rgba(102, 252, 241, 0.2);
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--accent-secondary);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background: var(--accent-primary);
+    box-shadow: var(--shadow-glow);
+    color: #000;
+}
