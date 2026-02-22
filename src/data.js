@@ -57,4 +57,18 @@ export const writeups = [
         explanation: "Standard `ls` does not show hidden files (files beginning with a dot). Passing the `-a` flag (or `-la` for a long detailed list including hidden files) will reveal the `.hidden` file. Then, use `cat` to read it.",
         password: "HiddenFilesAreFun"
     }
+,
+  {
+    "id": 5,
+    "title": "Level 4 --> 5",
+    "description": "The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.",
+    "commands": [
+      "ls",
+      "cd inhere",
+      "file ./-file*",
+      "cat ./-fileXX"
+    ],
+    "explanation": "There are many files, and we don’t know what’s inside them. We use file ./-file* to check the type of all files at once. The * is a wildcard that matches everything starting with -file, so the command applies to all files with that prefix. This helps us identify the one that is different from the others, and then we can use cat to read its contents.",
+    "password": "FileAllFiles"
+  }
 ];
