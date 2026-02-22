@@ -19,7 +19,7 @@ export const writeups = [
             "cat readme"
         ],
         explanation: "`ls` lists the files in the current directory. You will see a file named `readme`. To view its contents, use the `cat` command followed by the filename.",
-        password: "NH2SXQwcBdpmTEzi3bvIHzn6xsqJzOxx"
+        password: "FindThePasswordNow"
     },
     {
         id: 2,
@@ -30,7 +30,7 @@ export const writeups = [
             "cat ./-"
         ],
         explanation: "If you simply run `cat -`, the shell behaves unexpectedly because `-` typically implies standard input. We must specify the path implicitly using `./-` to tell `cat` to read the file literally named `-` in the current directory.",
-        password: "rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi"
+        password: "LookAtTheFile"
     },
     {
         id: 3,
@@ -42,7 +42,7 @@ export const writeups = [
             "cat spaces\\ in\\ this\\ filename"
         ],
         explanation: "Since the filename has spaces, we can't refer to it simply as `cat spaces in this filename` because `cat` would look for 4 separate files! You can either encase it in quotes, or escape the spaces using backslashes (`\\`). Tab completion is your best friend here.",
-        password: "aBZ0W5EmUfAf75d46Bds2PPeJvdCEsF"
+        password: "SpacesAreFun"
     },
     {
         id: 4,
@@ -55,17 +55,6 @@ export const writeups = [
             "cat .hidden"
         ],
         explanation: "Standard `ls` does not show hidden files (files beginning with a dot). Passing the `-a` flag (or `-la` for a long detailed list including hidden files) will reveal the `.hidden` file. Then, use `cat` to read it.",
-        password: "2EW7BBsr6aMMoJ2HjW067lcgVkTXjM01"
+        password: "HiddenFilesAreFun"
     }
-,
-  {
-    "id": 5,
-    "title": "Git Test",
-    "description": "desc",
-    "commands": [
-      "test"
-    ],
-    "explanation": "ex",
-    "password": "pass"
-  }
 ];
