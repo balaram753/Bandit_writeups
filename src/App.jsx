@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
-import { Terminal, Shield, BookOpen, ChevronRight, X, Lock } from 'lucide-react';
+import { Terminal, Shield, BookOpen, ChevronRight, X, Lock, Code } from 'lucide-react';
 import { writeups } from './data';
+import Developer from './pages/Developer';
 
 function HomePage() {
     const [selectedWriteup, setSelectedWriteup] = useState(null);
+    const navigate = useNavigate();
 
     const openWriteup = (w) => {
         setSelectedWriteup(w);
@@ -19,6 +21,12 @@ function HomePage() {
     return (
         <div className="container">
             <header>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1rem' }}>
+                    <button className="admin-btn" onClick={() => navigate('/dev')} aria-label="Meet the Developer">
+                        <Code size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                        <span style={{ verticalAlign: 'middle' }}>Developer Info</span>
+                    </button>
+                </div>
                 <h1><Shield style={{ display: 'inline', marginRight: '1rem', verticalAlign: 'middle', width: '48px', height: '48px', color: 'var(--accent-primary)' }} />Bandit Writeups</h1>
                 <p>Your beginner-friendly guide to mastering the Linux command line.</p>
             </header>
@@ -209,6 +217,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/mg" element={<AdminPage />} />
+                <Route path="/dev" element={<Developer />} />
             </Routes>
         </BrowserRouter>
     );

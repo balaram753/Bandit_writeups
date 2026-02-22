@@ -57,18 +57,49 @@ export const writeups = [
         explanation: "Standard `ls` does not show hidden files (files beginning with a dot). Passing the `-a` flag (or `-la` for a long detailed list including hidden files) will reveal the `.hidden` file. Then, use `cat` to read it.",
         password: "HiddenFilesAreFun"
     }
-,
-  {
-    "id": 5,
-    "title": "Level 4 --> 5",
-    "description": "The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.",
-    "commands": [
-      "ls",
-      "cd inhere",
-      "file ./-file*",
-      "cat ./-fileXX"
-    ],
-    "explanation": "There are many files, and we don’t know what’s inside them. We use file ./-file* to check the type of all files at once. The * is a wildcard that matches everything starting with -file, so the command applies to all files with that prefix. This helps us identify the one that is different from the others, and then we can use cat to read its contents.",
-    "password": "FileAllFiles"
-  }
+    ,
+    {
+        "id": 5,
+        "title": "Level 4 --> 5",
+        "description": "The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.",
+        "commands": [
+            "ls",
+            "cd inhere",
+            "file ./-file*",
+            "cat ./-fileXX"
+        ],
+        "explanation": "There are many files, and we don’t know what’s inside them. We use file ./-file* to check the type of all files at once. The * is a wildcard that matches everything starting with -file, so the command applies to all files with that prefix. This helps us identify the one that is different from the others, and then we can use cat to read its contents.",
+        "password": "FileAllFiles"
+    }
 ];
+
+export const DEVELOPER = {
+    name: 'Chillagundla Balaram',
+    role: 'Event Manager & IoT Penetration Tester',
+    image: '/mem_pic/balaram.jpg',
+    github: 'https://github.com/balaram753',
+    linkedin: 'https://linkedin.com/in/chbalaram',
+    instagram: 'https://instagram.com/_.roc_ram._',
+    bio: 'Passionate about securing the physical and digital world. Specializing in IoT Penetration Testing and Security.',
+    interests: ['IoT Penetration Testing', 'IoT Security', 'Penetration Testing', 'Embedded Systems'],
+    skills: [
+        { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+        { name: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
+        { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+        { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+        { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+        { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+        { name: 'Linux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
+        { name: 'Arduino', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg' }
+    ],
+    websites: [
+        { title: 'Srivastra Embroidery', url: 'https://srivastraembroidery.netlify.app/' },
+        { title: 'CyberSec Learn', url: 'https://cybersec-learrn.netlify.app/' },
+        { title: 'Portfolio', url: 'https://balaram753-portfolio.netlify.app/' }
+    ],
+    githubProjects: [
+        { title: 'RamGuard', url: 'https://github.com/balaram753/RamGuard', description: 'GitHub Repository' },
+        { title: 'Credential Audit Tool', url: 'https://github.com/balaram753/Credential-Audit-Tool', description: 'GitHub Repository' },
+        { title: 'Docker-Container-Security-Assessment', url: 'https://github.com/balaram753/Docker-Container-Security-Assessment', description: 'GitHub Repository' }
+    ]
+};
