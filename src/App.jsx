@@ -93,9 +93,16 @@ function AdminPage() {
 
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        if (passwordInput === 'nekendhukuraapuka') {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(passwordInput);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+        // Check against the SHA-256 hash
+        if (hashHex === '79f59426bcd514d77a4b968ab937c211ae0c4e3eaf3a19541a8b48b7370ecdba') {
             setIsAuthenticated(true);
         } else {
             alert("Invalid password");
